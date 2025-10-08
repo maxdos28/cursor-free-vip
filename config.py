@@ -103,8 +103,11 @@ def setup_config(translator=None):
                 'max_attempts': 3
             },
             'Token': {
-                'refresh_server': 'https://token.cursorpro.com.cn',
-                'enable_refresh': True
+                # ⚠️ 安全修复：禁用第三方 token 刷新服务器
+                # 原值: 'https://token.cursorpro.com.cn' - 会泄露你的 token
+                # 新值: '' (空) - 不使用任何第三方服务器
+                'refresh_server': '',  # 已禁用，保护隐私
+                'enable_refresh': False  # 已禁用第三方刷新功能
             },
             'Language': {
                 'current_language': '',  # Set by local system detection if empty
